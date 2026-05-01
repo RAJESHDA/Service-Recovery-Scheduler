@@ -6,7 +6,8 @@
     "include/stop_action.h"
     "src/stop_action.cpp"
     "src/restart_action.cpp"
-    "src/disable_action.cpp")
+    "src/disable_action.cpp" 
+    "include/recovery_scheduler.h")
 
 # Configure include directories 
 target_include_directories(lib 

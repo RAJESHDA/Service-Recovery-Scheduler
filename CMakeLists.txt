@@ -13,10 +13,11 @@ project ("Service-Recovery-Scheduler")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
+add_subdirectory(third-party/googletest-main)
 add_subdirectory(lib)
 add_subdirectory(app)
 
+add_subdirectory(tests)
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET my_app PROPERTY CXX_STANDARD 20)
 endif()

@@ -1,7 +1,12 @@
 ﻿add_library(lib STATIC 
-    src/dummy_later_renamed.cpp
-    include/dummy_later_renamed.h
-)
+    "include/recovery_execution_context.h"
+    "include/recovery_action.h"
+    "include/disable_action.h"
+    "include/restart_action.h"
+    "include/stop_action.h"
+    "src/stop_action.cpp"
+    "src/restart_action.cpp"
+    "src/disable_action.cpp")
 
 # Configure include directories 
 target_include_directories(lib 

@@ -44,6 +44,7 @@ The implementation is designed to support concurrent failure notifications while
 The following guarantees are provided:
 - State transitions for a single service are serialized.
 - Recovery actions for different services may execute in parallel.
+-  Set worker threads model based on cpu capability (Receieve work -> Queue work -> worker thread pick work -> Execute work)
 - Failures reported for the same service are processed in order.
 - Shared state is protected using synchronization primitives.
 

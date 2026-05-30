@@ -32,6 +32,7 @@ Failure #5 → DISABLE
 ...
 
 Service Recovery
+- Use PIMPL IDIOM to implement the class to keep the public API stable.
 - The scheduler does not perform health checks.
 - The scheduler relies on external components to report service health.
 - Service recovery is reported explicitly through "notify_healthy()".

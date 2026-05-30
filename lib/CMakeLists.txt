@@ -1,4 +1,4 @@
-﻿add_library(lib STATIC 
+﻿add_library(librecoveryscheduler STATIC 
     "include/recovery_execution_context.h"
     "include/recovery_action.h"
     "include/disable_action.h"
@@ -13,11 +13,11 @@
     "src/recovery_scheduler.cpp")
 
 # Configure include directories 
-target_include_directories(lib 
+target_include_directories(librecoveryscheduler 
     PUBLIC 
         # Exposes the 'include' directory to any target linking this library
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    PUBLIC 
+    PRIVATE 
         # Only accessible when compiling the library itself
         ${CMAKE_CURRENT_SOURCE_DIR}/src
 )

@@ -10,7 +10,7 @@ add_executable(recovery_scheduler_tests
 
 target_link_libraries(recovery_scheduler_tests
     PRIVATE
-        lib
+        librecoveryscheduler
         gtest
         gmock
         gtest_main

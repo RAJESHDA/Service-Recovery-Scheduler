@@ -32,6 +32,13 @@ namespace recovery_scheduler {
 
     void recovery_scheduler::Impl::ServiceRecord::reset_escalation() {
         current_level = 0;
+
+    }
+
+    void recovery_scheduler::Impl::ServiceRecord::clear_pending_actions() {
+        while (!pending_actions.empty()) {
+            pending_actions.pop();
+        }    
     }
 
     ServiceState recovery_scheduler::Impl::ServiceRecord::snapshot() const {
@@ -241,6 +248,7 @@ namespace recovery_scheduler {
         const auto record = find_record(service_name);
         std::lock_guard<std::mutex> lock(record->mutex);
         record->reset_escalation();
+        record->clear_pending_actions();
     }
 
     ServiceState recovery_scheduler::Impl::query_state(const std::string& service_name) const {

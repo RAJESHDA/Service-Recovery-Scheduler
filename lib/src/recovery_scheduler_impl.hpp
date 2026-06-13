@@ -48,6 +48,7 @@ namespace recovery_scheduler {
             std::size_t action_index_for_failure() const;
             void record_failure(const std::shared_ptr<recovery_action>& action);
             void reset_escalation();
+            void clear_pending_actions();
             ServiceState snapshot() const;
         };
 

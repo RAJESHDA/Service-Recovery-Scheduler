@@ -25,7 +25,7 @@ namespace recovery_scheduler {
     void recovery_scheduler::Impl::ServiceRecord::record_failure(const std::shared_ptr<recovery_action>& action) {
         last_action_taken = action->name();
         ++total_failures;
-        if (current_level < actions.size()) {
+        if (current_level + 1 < actions.size()) {
             ++current_level;
         }
     }

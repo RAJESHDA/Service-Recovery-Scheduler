@@ -14,6 +14,7 @@ namespace recovery_scheduler {
         std::size_t m_current_level{ 0 };
         std::optional<std::string> m_last_action_taken{};
         std::size_t m_total_failures{ 0 };
+        std::vector<std::string> m_pending_actions{};
     };
 
     class recovery_scheduler final {

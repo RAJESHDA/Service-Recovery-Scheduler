@@ -42,7 +42,30 @@ namespace recovery_scheduler {
     }
 
     ServiceState recovery_scheduler::Impl::ServiceRecord::snapshot() const {
-        return ServiceState{ current_level, last_action_taken, total_failures };
+        std::lock_guard<std::mutex> lk(mutex);
+
+        ServiceState state;
+        state.m_current_level = current_level;
+        state.m_last_action_taken = last_action_taken;
+        state.m_total_failures = total_failures;
+
+        // Make a copy of the queue to iterate without modifying the real queue
+        std::queue<PendingAction> copy = pending_actions;
+        state.m_pending_actions.reserve(copy.size());
+
+        while (!copy.empty()) {
+            const PendingAction &pa = copy.front();
+            if (pa.action) {
+                // assume recovery_action defines std::string name() const;
+                state.m_pending_actions.push_back(pa.action->name());
+            } else {
+                // fallback: use service_name if action is null
+                state.m_pending_actions.push_back(pa.service_name);
+            }
+            copy.pop();
+        }
+
+        return state;
     }
 
     // AsyncActionExecutor --------------------------------------------------------

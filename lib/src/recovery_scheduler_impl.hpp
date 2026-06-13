@@ -57,6 +57,11 @@ namespace recovery_scheduler {
             explicit AsyncActionExecutor(std::size_t worker_count);
             ~AsyncActionExecutor();
 
+            AsyncActionExecutor(const AsyncActionExecutor&) = delete;
+            AsyncActionExecutor& operator=(const AsyncActionExecutor&) = delete;
+            AsyncActionExecutor(AsyncActionExecutor&&) = delete;
+            AsyncActionExecutor& operator=(AsyncActionExecutor&&) = delete;
+            
             void submit(std::function<void()> task);
             void wait_idle();
 
